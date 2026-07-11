@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: #050508;
+    --foreground: #ffffff;
+    --font-noto-sans-jp: 'Noto Sans JP', sans-serif;
+    --font-shippori-mincho: 'Shippori Mincho', serif;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0b10;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3f4152;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6366f1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .jp-divider {
+    @apply flex items-center justify-center;
+  }
+  .jp-divider::before,
+  .jp-divider::after {
+    content: "";
+    @apply h-[1px] w-12 bg-studio-neon/40;
+  }
+  
+  .glass-panel {
+    @apply bg-studio-navy/60 backdrop-blur-md border border-white/5 shadow-xl;
+  }
+  
+  .grid-overlay {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  .stars-bg {
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: stars 30s linear infinite;
+    opacity: 0.3;
+  }
+  
+  @keyframes stars {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-200px); }
+  }
+
+  .tag-badge {
+    @apply px-2 py-0.5 rounded text-[10px] font-bold tracking-wider border;
+  }
+  .tag-badge-neon {
+    @apply border-studio-neon/30 text-studio-neon/90;
+  }
+  .tag-badge-gold {
+    @apply border-studio-gold/30 text-studio-gold/90;
+  }
+}
